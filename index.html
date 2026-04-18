@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naruto Board Game Companion</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="top-panel">
+        <div class="panel-box">
+            <input type="text" id="player-name" placeholder="Nombre de jugador">
+        </div>
+        <div class="panel-box ryo-box">
+            <label>Ryo:</label>
+            <input type="number" id="player-ryo" value="0">
+            <div class="subtext">moneda del juego</div>
+        </div>
+        <div class="panel-box">
+            <div id="voluntad-container" class="voluntad-cells"></div>
+            <div class="subtext">Voluntad de fuego (Vida)</div>
+        </div>
+        <div class="panel-box score-box">
+            <label>Puntos:</label>
+            <button onclick="updatePuntos(-1)">-</button>
+            <span id="player-puntos">0</span>
+            <button onclick="updatePuntos(1)">+</button>
+            <div class="subtext">puntuación de juego</div>
+        </div>
+    </header>
+
+    <main id="shinobi-container" class="shinobi-grid"></main>
+
+    <footer class="bottom-actions">
+        <button onclick="addShinobiCard()">Agregar Shinobi (<span id="shinobi-cost">100</span> Ryo)</button>
+        <button onclick="promptAddFeature('habilidad')">Añadir Habilidad</button>
+        <button onclick="promptAddFeature('arma')">Añadir Armas</button>
+        <button onclick="openJutsuModal()">Aprender Jutsu</button>
+    </footer>
+
+    <footer class="system-actions">
+        <button onclick="resetGame()">NUEVO</button>
+        <button onclick="loadGame()">CARGAR</button>
+        <button onclick="saveGame()">GUARDAR</button>
+    </footer>
+
+    <div id="jutsu-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Secuencia de Sellos</h3>
+            <div id="seal-sequence-display" class="seal-display"></div>
+            <div class="seal-grid">
+                <button onclick="addSeal('Ne')">Ne</button>
+                <button onclick="addSeal('Ushi')">Ushi</button>
+                <button onclick="addSeal('Tora')">Tora</button>
+                <button onclick="addSeal('U')">U</button>
+                <button onclick="addSeal('Tatsu')">Tatsu</button>
+                <button onclick="addSeal('Mi')">Mi</button>
+                <button onclick="addSeal('Uma')">Uma</button>
+                <button onclick="addSeal('Hitsuji')">Hitsuji</button>
+                <button onclick="addSeal('Saru')">Saru</button>
+                <button onclick="addSeal('Tori')">Tori</button>
+                <button onclick="addSeal('Inu')">Inu</button>
+                <button onclick="addSeal('I')">I</button>
+            </div>
+            <div class="modal-actions">
+                <button onclick="confirmJutsu()">Verificar y Aprender</button>
+                <button onclick="closeJutsuModal()">Cancelar</button>
+                <button onclick="clearSeals()">Limpiar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bases de datos (cargan antes que app.js) -->
+    <script src="shinobis.js"></script>
+    <script src="jutsus.js"></script>
+    <script src="armas.js"></script>
+    <script src="habilidades.js"></script>
+
+    <!-- Lógica principal -->
+    <script src="app.js"></script>
+</body>
+</html>
