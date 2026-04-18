@@ -1,0 +1,1156 @@
+const jutsusDB = {
+      // PACK BÁSICO: TÉCNICAS DE ACADEMIA
+  "Hitsuji-I-Ushi": { 
+      nombre: "Jutsu de Reemplazo (Kawarimi)", 
+      tipo: "activa", 
+      bono: { des: 2 },
+      descripcion: "En el instante previo a recibir un impacto, canalizas chakra para intercambiar tu cuerpo por un tronco,el enemigo golpea la madera mientras tú te reposicionas. [COSTO: 2 Chakra] [EFECTO: Reacción Defensiva. Te otorga Ventaja en tu tirada de Esquivar contra un ataque físico o proyectil.]" 
+  },
+
+  "Hitsuji-Tora-Ne": { 
+      nombre: "Disipar (Kai)", 
+      tipo: "activa", 
+      bono: { int: 1 },
+      descripcion: "Interrumpes bruscamente tu flujo de chakra o inyectas el tuyo en un aliado para romper una ilusión enemiga. [COSTO: 1 Chakra] [EFECTO: Defensa contra genjutsu.si se usa como reacción justo antes de ser atrapado por un Genjutsu, defiendes con desventaja. Si gastas una acción para usarlo sobre un compañero que ya está atrapado, tiras 1d20+int contra CD del Genjutsu.]" 
+  },
+
+  "Hitsuji-U-Mi": { 
+      nombre: "Cuerpo Parpadeante (Shunshin)", 
+      tipo: "activa", 
+      bono: { tai: 2 },
+      descripcion: "Revitalizas temporalmente tu cuerpo con chakra puro para moverte a velocidades casi imperceptibles. [COSTO: 2 Chakra] [EFECTO: Técnica multipropósito. Si se usa como Defensa Activa, realizas la acción de Esquivar con Ventaja. Si se usa como Jutsu Conjunto (Impulso) en tu propio turno, tu próximo ataque a Melee gana +2 de Daño Fijo.]" 
+  },
+
+  "Hitsuji-Tori-Saru": { 
+      nombre: "Técnica de Escape (Nukeake)", 
+      tipo: "activa", 
+      descripcion: "Una maniobra táctica de desvío y camuflaje rápido diseñada específicamente para sacar a tu equipo de un combate. [COSTO: 1 Chakra] [EFECTO: Mecánica de Retirada. Quien la usa tira 1d20 + Destreza con Desventaja contra la Destreza pasiva del enemigo más rápido. Si tiene éxito, el usuario huye del combate exitosamente.]" 
+  },
+  // ELEMENTO TIERRA (DOTON)
+  // RANGO D
+  "Ushi-Ne-Mi": {
+      nombre: "Ola de Lodo",
+      tipo: "activa",
+      bono: { des: 2 },
+      descripcion: "Haces ondular el suelo bajo tus pies como si fuera líquido, desplazándote rápidamente hacia atrás sobre una cresta de tierra. [COSTO: 2 Chakra] [EFECTO: Defensa Activa. Evita un ataque a melee desplazándote fuera del rango.]"
+  },
+  
+  "Ushi-Tora-I": {
+      nombre: "Agujas de Lodo",
+      tipo: "activa",
+      bono: { nin: 2 },
+      descripcion: "Tras retroceder con la tierra, endureces el lodo residual y lo disparas como estacas afiladas hacia el enemigo expuesto. [COSTO: 2 Chakra] [DAÑO FIJO: 2] [EFECTO: Combo reactivo. Si en el turno anterior esquivaste exitosamente con Ola de Lodo, este ataque se lanza con Ventaja.] [REQUISITO: Uso previo de Ola de Lodo.]"
+  },
+
+  "Ushi-Tori-Tatsu": {
+      nombre: "Escudo de Tierra",
+      tipo: "activa",
+      bono: { nin: 2 },
+      descripcion: "Levantas un bloque sólido de piedra que funciona como una barricada perfecta contra proyectiles. [COSTO: 2 Chakra] [EFECTO: Técnica puramente defensiva. Defiendes con Ventaja contra armas a distancia.]"
+  },
+
+  "Ushi-Saru-Ne": {
+      nombre: "Pistola de Piedra",
+      tipo: "activa",
+      bono: { nin: 1 },
+      descripcion: "Disparas desde tus dedos un diminuto guijarro que se expande en el aire hasta alcanzar el tamaño de una roca contundente. [COSTO: 1 Chakra] [DAÑO FIJO: 1]"
+  },
+
+  // RANGO C
+  "Ushi-Inu-Tori-Mi": {
+      nombre: "Muro de Lodo",
+      tipo: "activa",
+      bono: { nin: 3 },
+      descripcion: "Escupes un denso arco de barro que se solidifica al instante en una muralla inmensa. [COSTO: 3 Chakra/4 Chakra para proteger Aliado] [EFECTO: Defensa Activa/Aliada. Solo defiende contra Ninjutsu. No sirve para bloquear ataques físicos ni proyectiles.]"
+  },
+
+  "Ushi-Tatsu-U-Saru": {
+      nombre: "Piedras Voladoras",
+      tipo: "activa",
+      bono: { nin: 3 },
+      descripcion: "Haces emerger del suelo una ráfaga de pedruscos que salen disparados como metralla desde múltiples ángulos. [COSTO: 3 Chakra] [DAÑO FIJO: 3] [EFECTO: Ataque engañoso. El objetivo realiza su tirada de Bloqueo con Desventaja.]"
+  },
+
+  "Ushi-Ne-I-Tora": {
+      nombre: "Armadura de Roca",
+      tipo: "activa",
+      bono: { fue: 2, tai: 2 },
+      descripcion: "Recubres tu piel con una fina pero ultrarresistente capa de roca que absorbe los impactos físicos. [COSTO: 3 Chakra + 1 Chakra/turno] [EFECTO: Buff sostenido. Mientras esté activo, suma +2 al Daño Fijo de tu Melee y tiras tus acciones de Bloquear con Ventaja.]"
+  },
+
+  "Ushi-Mi-Hitsuji-Tori": {
+      nombre: "Alud de Tierra",
+      tipo: "activa",
+      bono: { nin: 3 },
+      descripcion: "Envías una vibración rasante por el suelo que liquida el terreno bajo los pies del objetivo, haciéndolo resbalar violentamente. [COSTO: 3 Chakra] [DAÑO FIJO: 2] [EFECTO: Inquebrantable (No se puede Bloquear). Si impacta, el objetivo queda Inmovilizado (Derribado). Para levantarse debe usar la acción Liberarse (CD 13 Fuerza/Destreza).]"
+  },
+
+  "Ushi-Uma-Inu-Tatsu": {
+      nombre: "Cazador de Cabezas",
+      tipo: "activa",
+      bono: { nin: 3 },
+      descripcion: "Te sumerges bajo la tierra, moviéndote como agua para emboscar a tu presa desde abajo y enterrarla viva hasta el cuello. [COSTO: 4 Chakra] [EFECTO: Emboscada. Turno 1: te sumerges (Imposible de atacar, excepto con Doton de área que te hace Daño Doble). Turno 2: atacas a Melee; si aciertas, el objetivo queda enterrado y Vulnerable sin poder defenderse. Para salir debe usar Liberarse (CD 15 Fuerza).]"
+  },
+
+  "Ushi-Tora-U-Mi": {
+      nombre: "Colmillo Perforador",
+      tipo: "activa",
+      bono: { tai: 3 },
+      descripcion: "Te ocultas bajo tierra y giras como un taladro para irrumpir a los pies del enemigo, ejecutando un uppercut devastador. [COSTO: 3 Chakra] [DAÑO FIJO: 4] [EFECTO: Emboscada. Turno 1: te sumerges (Imposible de atacar, excepto con Doton de área que te hace Daño Doble). Turno 2: atacas a Melee. El ataque se lanza con Ventaja.]"
+  },
+
+  "Ushi-I-Ne-Saru": {
+      nombre: "Clon de Lodo",
+      tipo: "activa",
+      bono: { des: 3 },
+      descripcion: "Cuando te acorralan, tu cuerpo estalla en barro espeso y te regeneras ileso a unos metros, burlando el ataque físico. [COSTO: 3 Chakra] [EFECTO: Reacción Defensiva exclusiva contra Ataques a Melee o Inmovilizaciones. Te libera automáticamente de las ataduras o esquiva el golpe.]"
+  },
+
+  "Ushi-Tori-Mi-Ne": {
+      nombre: "Puño de Roca",
+      tipo: "activa",
+      bono: { fue: 3, tai: 3 },
+      descripcion: "Envuelves tu brazo en un bloque contundente de roca sólida y ejecutas un golpe descendente aplastante. [COSTO: 3 Chakra]"
+  },
+
+  "Ushi-Uma-Tatsu-I": {
+      nombre: "Roca Aligerada",
+      tipo: "activa",
+      bono: { nin: 2 },
+      descripcion: "Alteras la densidad de los ataques de Doton enemigos, volviendo rocas inmensas tan ligeras como el papel. [COSTO: 2 Chakra] [EFECTO: Técnica defensiva. Al defenderte contra cualquier Jutsu de elemento Tierra (Doton), tiras tu Defensa con Ventaja.]"
+  },
+
+  // RANGO B
+  "Ushi-Saru-Ne-I-Mi": {
+      nombre: "Sendero de Roca",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "Dos placas tectónicas emergen a los flancos del enemigo, cerrándose como una mandíbula para aplastarlo y sepultarlo. [COSTO: 4 Chakra + 2 Chakra/turno] [DAÑO FIJO: 5] [EFECTO: Inquebrantable (No puede ser Bloqueado). Si impacta, el objetivo queda Atrapado y Anulado. Ni él ataca, ni nadie puede atacarlo. Debe usar Liberarse (CD 18 Fuerza) o esperar a que el usuario desactive la técnica.]"
+  },
+
+  "Ushi-Tora-U-Tatsu-Tori": {
+      nombre: "Impermanencia",
+      tipo: "activa",
+      bono: { nin: 5 },
+      descripcion: "Apoyas ambas palmas en el suelo y provocas un terremoto localizado que resquebraja la tierra bajo el enemigo. [COSTO: 5 Chakra] [DAÑO FIJO: 4] [EFECTO: Ataque de Área ofensivo. Daña a todos los enemigos presentes.]"
+  },
+
+  "Ushi-Inu-Mi-Ne-Uma": {
+      nombre: "Golem de Piedra",
+      tipo: "activa",
+      bono: { nin: 5 },
+      descripcion: "Vomitas un amasijo de roca y barro que forma un guardián gigante que devora cualquier cosa que te retenga. [COSTO: 5 Chakra] [EFECTO:Se traga y destruye instantáneamente cualquier Jutsu de Inmovilización (Prisiones, Sombras, Cadenas) que afecte al usuario o a un aliado, se lanza contra el CD de lo que te aprisione.]"
+  },
+
+  "Ushi-Hitsuji-I-Tori-Mi": {
+      nombre: "Deslizamiento de Lodo",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "Transformas el suelo en barro y haces emerger cuatro lanzas puntiagudas que buscan ensartar las extremidades del objetivo. [COSTO: 5 Chakra] [DAÑO FIJO: 5] [EFECTO: Inquebrantable (No se puede Bloquear). Si acierta, el objetivo queda Inmovilizado. Para salir debe usar Liberarse (CD 15 Fuerza).]"
+  },
+
+  "Ushi-Tatsu-Saru-I-Ne": {
+      nombre: "Piel de Hierro",
+      tipo: "activa",
+      bono: { fue: 4, tai: 4 },
+      descripcion: "Endureces los minerales en tu cuerpo hasta alcanzar la solidez del acero templado. [COSTO: 5 Chakra + 2 Chakra/turno] [EFECTO: Tiras Bloqueo con Ventaja, pero realizas la acción de Esquivar con Desventaja.]"
+  },
+
+  "Ushi-Tori-Uma-Inu-Tora": {
+      nombre: "Tiburón Subterráneo",
+      tipo: "activa",
+      bono: { tai: 4 },
+      descripcion: "Te hundes en la tierra sosteniendo tu arma larga como una aleta, y surcas el campo para rebanar y derribar a la presa. [COSTO: 5 Chakra] [DAÑO FIJO: 5 + Daño del Arma] [EFECTO: Ataque Melee.] [REQUISITO: Arma Larga equipada.]"
+  },
+
+  "Ushi-Ne-Mi-I-Saru": {
+      nombre: "Clon de Piedra",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "Escupes rocas pesadas que toman tu forma, diseñadas para recibir el castigo físico por ti. [COSTO: 2 Chakra por clon] [EFECTO: Defensa Pasiva. Cada clon puede recibir 1 ataque enemigo dirigido a ti, absorbiendo el daño y luego desmoronándose.]"
+  },
+
+  "Ushi-U-Tatsu-Tori-Hitsuji": {
+      nombre: "Roca Súper Pesada",
+      tipo: "activa",
+      bono: { fue: 4 },
+      descripcion: "Segundos después de conectar un puñetazo petrificado, multiplicas drásticamente el peso de la roca aplastando al rival. [COSTO: 4 Chakra] [DAÑO FIJO: 6] [EFECTO: Técnica de combo. Segundo impacto ineludible.] [REQUISITO: Usarse en el mismo turno tras impactar con éxito el Jutsu Puño de Roca.]"
+  },
+
+  // RANGO A
+  "Ushi-Tora-U-Saru-I-Ne": {
+      nombre: "Sufrimiento Ineludible",
+      tipo: "activa",
+      bono: { nin: 5 },
+      descripcion: "El suelo se convierte en arenas movedizas que tragan al enemigo centímetro a centímetro. [COSTO: 6 Chakra + 2 Chakra/turno] [EFECTO: Jutsu trampa. Si acierta, inmoviliza y hunde lentamente. El objetivo debe usar Liberarse (CD 22 Fuerza). Si no escapa en 4 turnos, se ahoga bajo tierra y su Vida cae a 0 (Agonizando).]"
+  },
+
+  "Ushi-Mi-Tatsu-Inu-Uma-Tori": {
+      nombre: "Lluvia de Lanzas de Tierra",
+      tipo: "activa",
+      bono: { nin: 6 },
+      descripcion: "Elevas colosales pilares de roca, empalando todo lo que se encuentre en la superficie sin discriminación. [COSTO: 7 Chakra] [DAÑO FIJO: 8] [EFECTO: Ataque de Área Colosal. Ataca a TODOS los involucrados en la pelea, tanto Aliados como Enemigos.]"
+  },
+
+  "Ushi-Saru-I-Tora-Tatsu-Mi": {
+      nombre: "Dragón de Tierra",
+      tipo: "activa",
+      bono: { nin: 5 },
+      descripcion: "Un dragón gigantesco compuesto de lodo y roca arrasa en línea recta, destrozando cualquier barricada. [COSTO: 7 Chakra] [DAÑO FIJO: 10] [EFECTO: Ataque devastador de línea.]"
+  },
+
+  "Ushi-Tori-Ne-Hitsuji-U-Saru": {
+      nombre: "Bomba Dragón de Tierra",
+      tipo: "activa",
+      bono: { nin: 7 },
+      descripcion: "Fijas los pies del enemigo y luego invocas la cabeza de un dragón a quemarropa que dispara un obús de lodo al pecho. [COSTO: 8 Chakra] [DAÑO FIJO: 12] [EFECTO: Inquebrantable (No puede ser Bloqueado). Inmoviliza y dispara en una sola acción. El objetivo solo puede Esquivar o realizar Choque de Técnicas.]"
+  },
+
+  "Ushi-I-Tatsu-Uma-Mi-Inu": {
+      nombre: "Erupción",
+      tipo: "activa",
+      bono: { nin: 6 },
+      descripcion: "Provocas que placas enteras de roca se levanten y lancen a todos los enemigos decenas de metros por los aires. [COSTO: 7 Chakra] [DAÑO FIJO: 7 de caída] [EFECTO: Ataque de Área. Afecta a todos los enemigos. Si acierta, sufren daño y quedan derribados (Inmovilizados). Para levantarse rápido deben Liberarse (CD 10 Destreza).]"
+  },
+
+  // RANGO S
+  "Ushi-Tora-U-Tatsu-Mi-Uma-Hitsuji": {
+      nombre: "Esfera de Tumbas",
+      tipo: "activa",
+      bono: { nin: 8 },
+      descripcion: "Levantas un meteorito de roca pura sobre tu cabeza para arrojarlo contra el campo de batalla como un acto de juicio final. [COSTO: 10 Chakra + 5 Energía] [DAÑO FIJO: 15] [EFECTO: Ataque de Área Definitivo. Impacta a todos los enemigos. Inquebrantable (No puede Bloquearse). La Defensa con Técnicas (Choque) se hace con Desventaja.]"
+  },
+
+  "Ushi-Ne-I-Saru-Tori-Inu-Tatsu": {
+      nombre: "Golpe Terremoto",
+      tipo: "activa",
+      bono: { nin: 8 },
+      descripcion: "Un pisotón que abre la tierra reclamando para sí misma a cualquier cuerpo que esté al borde de la muerte. [COSTO: 9 Chakra] [DAÑO FIJO: 10] [EFECTO: Técnica de Ejecución. Cualquier objetivo en estado Agonizando muere y es sepultado. Si ataca a un objetivo sano y el Daño Fijo lo reduce a 0 Vida, muere enterrado automáticamente ignorando la Agonía.]"
+  },
+  
+  // ELEMENTO VIENTO (FŪTON)
+  // RANGO D
+  "Tori-Mi-Tora": { 
+      nombre: "Palma de Vendaval", 
+      tipo: "activa", 
+      bono: { nin: 1 },
+      descripcion: "Comprimes el aire frente a tus palmas y lo liberas en una ráfaga súbita. [COSTO: 1 Chakra] [DAÑO FIJO: 1] [EFECTO: Ideal para Jutsus Conjuntos (Impulso). Si lo usas para impulsar a un compañero o acelerar un proyectil aliado, ese ataque inflige el Doble de Daño.]" 
+  },
+
+  "Tori-U-Ne": { 
+      nombre: "Espada de Viento", 
+      tipo: "activa", 
+      bono: { tai: 2 },
+      descripcion: "Moldeas el chakra de viento en tu palma desnuda, formando una hoja de aire comprimido invisible pero afilada como un bisturí. [COSTO: 2 Chakra] [EFECTO: Suma +2 al Daño Fijo de tu próximo ataque a Melee. Dura únicamente el turno en que se activa.]" 
+  },
+
+  "Tori-Ushi-I": { 
+      nombre: "Ráfaga de Vendaval", 
+      tipo: "activa", 
+      bono: { nin: 2 },
+      descripcion: "Exhalas un torrente de viento cortante que avanza como una pared invisible. [COSTO: 2 Chakra] [DAÑO FIJO: 2] [EFECTO: Ataque flexible. Puedes enfocar todo el daño en 1 solo objetivo, o dividir la ráfaga para golpear a 2 objetivos distintos haciendo 1 punto de daño a cada uno.]" 
+  },
+
+  // RANGO C
+  "Tori-Inu-Saru-Tatsu": { 
+      nombre: "Palma de Onda Bestial", 
+      tipo: "activa", 
+      bono: { nin: 3 },
+      descripcion: "Tajas el aire con tu brazo, liberando una onda de choque afilada que adopta la forma de una enorme garra translúcida. [COSTO: 3 Chakra] [DAÑO FIJO: 4] [EFECTO: Ataque frontal de media distancia.]" 
+  },
+
+  "Tori-Hitsuji-Mi-Uma": { 
+      nombre: "Bola de Viento Espiral", 
+      tipo: "activa", 
+      bono: { nin: 3 },
+      descripcion: "Aspiras aire fresco y lo comprimes formando un feroz ciclón esférico que sale disparado como bala de cañón. [COSTO: 3 Chakra] [DAÑO FIJO: 4] [EFECTO: Proyectil estándar. Excelente para Choque de Técnicas.]" 
+  },
+
+  "Tori-U-Tora-Ushi": { 
+      nombre: "Balas de Aire", 
+      tipo: "activa", 
+      bono: { nin: 3 },
+      descripcion: "Inflas tu pecho almacenando chakra de viento y te golpeas el estómago, disparando un obús de aire denso a altísima velocidad. [COSTO: 3 Chakra] [DAÑO FIJO: 3] [EFECTO: Proyectil rápido.]" 
+  },
+
+  "Tori-Ne-I-Tatsu": { 
+      nombre: "Tormenta de Polvo", 
+      tipo: "activa", 
+      bono: { nin: 3 },
+      descripcion: "Vomitas un torrente de aire cargado con tierra y partículas finas que raspan la piel del enemigo y se le meten en los ojos. [COSTO: 3 Chakra] [DAÑO FIJO: 2] [EFECTO: Desorientador. El objetivo impactado realiza su próximo ataque con Desventaja.]" 
+  },
+
+  "Tori-Saru-Tori-Mi": { 
+      nombre: "Hoja de Choque", 
+      tipo: "activa", 
+      bono: { nin: 3 },
+      descripcion: "Impregnas tu arma con chakra y lanzas un tajo al vacío que genera una ráfaga cortante. [COSTO: 3 Chakra] [DAÑO FIJO: 3] [EFECTO: Si la usas como Defensa Activa (Choque de Técnicas) contra un proyectil, tiras con Ventaja.] [REQUISITO: Arma equipada.]" 
+  },
+
+  // RANGO B
+  "Tori-Uma-Inu-Hitsuji-Ne": { 
+      nombre: "Corte de Vendaval Rugiente", 
+      tipo: "activa", 
+      bono: { tai: 4 },
+      descripcion: "Lanzas un tajo vertical aplastante. Si fallas, el aire retenido estalla contra el suelo resquebrajándolo. [COSTO: 4 Chakra] [DAÑO FIJO: 5] [EFECTO: Ataque a Melee. Si el objetivo Esquiva el golpe inicial, debe tirar una segunda Esquiva inmediatamente por la onda de choque. Si falla la segunda, queda Inmovilizado. (Liberarse CD 18 Destreza/Fuerza).]" 
+  },
+
+  "Tori-Tatsu-Mi-U-Saru": { 
+      nombre: "Patada de Huracán Rugiente", 
+      tipo: "activa", 
+      bono: { tai: 4 },
+      descripcion: "Envuelves tu pierna en un vendaval rotatorio que actúa como un taladro atmosférico, destrozando la guardia enemiga. [COSTO: 4 Chakra] [DAÑO FIJO: 7] [EFECTO: Ataque Melee directo y devastador.]" 
+  },
+
+  "Tori-Tora-Ushi-I-Ne": { 
+      nombre: "Polvo de Arena", 
+      tipo: "activa", 
+      bono: { nin: 4 },
+      descripcion: "Liberas desde tu boca un tornado expansivo hacia el suelo, levantando una cortina de polvo impenetrable que cubre todo el campo. [COSTO: 5 Chakra] [EFECTO: Control de Campo. Durante todo el siguiente turno, TODOS los enemigos realizan cualquier tirada (Ataque o Defensa) con Desventaja por la ceguera y confusión.]" 
+  },
+
+  "Tori-Inu-Hitsuji-Tori-Uma": { 
+      nombre: "Tifón Inquebrantable", 
+      tipo: "activa", 
+      bono: { nin: 4 },
+      descripcion: "Haces rotar el aire a tu alrededor creando un vórtice huracanado personal que actúa como escudo de 360 grados. [COSTO: 4 Chakra] [EFECTO: Defensa Activa versátil. Te permite bloquear y desviar cualquier agresión entrante (Técnicas, Proyectiles o Ataques a Melee).]" 
+  },
+
+  "Tori-Mi-Tatsu-U-I": { 
+      nombre: "Danza de Dispersión de Flores", 
+      tipo: "activa", 
+      bono: { nin: 4 },
+      descripcion: "Levantas un vórtice de viento mezclado con pétalos. Sus corrientes ocultan cuchillas de aire implacables. [COSTO: 4 Chakra] [DAÑO FIJO: 3] [EFECTO: Si se usa para defenderse de un Ataque a Melee, la tirada defensiva se hace con Ventaja. Si lo usas ofensivamente para atacar, se tira con Desventaja.]" 
+  },
+
+  "Tori-Saru-Ne-Ushi-Tora": { 
+      nombre: "Red de Captura", 
+      tipo: "activa", 
+      bono: { nin: 4 },
+      descripcion: "Varios shinobis tejen simultáneamente redes de hilos de viento que se cruzan en el aire, atrapando a la presa en un cubo cortante. [COSTO: 4 Chakra por usuario] [DAÑO FIJO: 5 por usuario] [EFECTO: Jutsu Conjunto. Si impacta, el objetivo sufre el daño sumado y queda totalmente Inmovilizado. (Liberarse CD 20 Destreza/Fuerza).] [REQUISITO: 2 o más usuarios.]" 
+  },
+
+  // RANGO A
+  "Tori-Inu-U-Mi-Hitsuji-Tatsu": { 
+      nombre: "Gran Ruptura", 
+      tipo: "activa", 
+      bono: { nin: 6 },
+      descripcion: "Lanzas un rugido que desata un ciclón cilíndrico gigantesco, arrasando el campo de batalla como una topadora invisible. [COSTO: 7 Chakra] [DAÑO FIJO: 6] [EFECTO: Ataque de Área. Impacta a todos los enemigos. Si acierta, son derribados y quedan Inmovilizados en el suelo 1 turno. (Liberarse CD 22 Fuerza/Destreza).]" 
+  },
+
+  "Tori-Tora-Ushi-Ne-Saru-I": { 
+      nombre: "Tifón Supremo", 
+      tipo: "activa", 
+      bono: { nin: 6 },
+      descripcion: "Despliegas una tormenta focalizada que arranca el oxígeno y desvía la trayectoria de magias o proyectiles. [COSTO: 6 Chakra] [EFECTO: Defensa Activa absoluta. Solo contra Ninjutsus enemigos o Proyectiles, defendiendo con Ventaja. Inútil contra golpes Melee.]" 
+  },
+
+  "Tori-Uma-Tatsu-Tori-Mi-U": { 
+      nombre: "Balas de Vacío", 
+      tipo: "activa", 
+      bono: { nin: 6 },
+      descripcion: "Aspiras aire y expulsas múltiples ráfagas de viento presurizado en rápida sucesión. [COSTO: 6 Chakra] [DAÑO FIJO: 3 por bala] [EFECTO: Disparas 3 balas en el mismo turno, realizando 3 tiradas de ataque individuales.]" 
+  },
+
+  "Tori-Ne-I-Inu-Ushi-Hitsuji": { 
+      nombre: "Bomba de Vacío", 
+      tipo: "activa", 
+      bono: { nin: 7 },
+      descripcion: "Inhalas oxígeno colapsándolo en tus pulmones antes de escupir una esfera de aire tan densa que deforma el espacio. [COSTO: 7 Chakra] [DAÑO FIJO: 10] [EFECTO: Ataque frontal masivo y devastador.]" 
+  },
+
+  "Tori-Saru-Tora-Uma-Mi-Tatsu": { 
+      nombre: "Filo de Aire", 
+      tipo: "activa", 
+      bono: { nin: 5 },
+      descripcion: "Vistes tu arma con una capa fluctuante de chakra ultrasónico. Vibra a una frecuencia que ignora la fricción, volviéndose imparable. [COSTO: 6 Chakra] [EFECTO: El arma impregnada siempre causa el Doble de Daño. Gasta el Chakra al activarse y se mantiene mientras sostengas el arma en combate.] [REQUISITO: Arma cortante equipada.]" 
+  },
+
+  // RANGO S
+  "Tori-Hitsuji-I-Ne-Ushi-Tora-U": { 
+      nombre: "Ráfaga de Vacío", 
+      tipo: "activa", 
+      bono: { nin: 8 },
+      descripcion: "Creas un vacío físico en la atmósfera para luego soltar una gigantesca hoja de aire semilunar que viaja de lado a lado del campo. [COSTO: 10 Chakra] [DAÑO FIJO: 12] [EFECTO: Ataque de Área. Atraviesa y hiere a todos los enemigos. Su filo es tan extremo que otorga Golpe Crítico sacando 19 o 20 en el d20.]" 
+  },
+// ELEMENTO RAYO (RAITON)
+  // RANGO C
+  "U-Ne-Tora-Tori": {
+      nombre: "Cuchilla de Rayo",
+      tipo: "activa",
+      bono: { tai: 3 },
+      descripcion: "Canalizas chakra eléctrico en tu mano transformándola en una hoja afilada capaz de cortar carne y metal. [COSTO: 3 Chakra] [EFECTO: Potenciador de combate. Suma +3 de daño eléctrico a tu próximo ataque a Melee. El ataque ignora defensa pasiva de armaduras metálicas.]"
+  },
+
+  // RANGO B
+  "U-Tatsu-Mi-Saru-I": {
+      nombre: "Modo Chakra de Rayo",
+      tipo: "activa",
+      bono: { tai: 4 },
+      descripcion: "Te envuelves en un manto de relámpagos que estimula tu sistema nervioso al límite. [COSTO: 4 Chakra (Activación) + 2 por turno] [EFECTO: Buff masivo. Añade +3 al Daño Fijo de ataques físicos. Tienes Ventaja en todas tus tiradas de Esquivar y Ataque a Melee.]"
+  },
+
+  "U-Ushi-Tori-Inu-Ne": {
+      nombre: "Rayo Opresión",
+      tipo: "activa",
+      bono: { tai: 4 },
+      descripcion: "Golpe físico descendente cargado con toda la potencia de tu aura eléctrica para aplastar la guardia. [COSTO: 4 Chakra + 1 Energía] [DAÑO FIJO: 6] [EFECTO: Requiere Modo Chakra de Rayo activo. Si el objetivo intenta Bloquear o usar Choque de Técnicas, lo hace con Desventaja.]"
+  },
+
+  "U-Hitsuji-Tora-Ushi-Mi": {
+      nombre: "Clon de Rayo",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "Moldeas una copia exacta de energía estática que electrocuta al agresor al ser destruida. [COSTO: 5 Chakra] [DAÑO FIJO: 4 (Detonación)] [EFECTO: Otorga +1 Punto de Mando extra mientras esté activo. Si recibe un impacto Melee, explota dañando al agresor y desaparece.]"
+  },
+
+  "U-Saru-Tori-I-Ne": {
+      nombre: "Esferas Relámpago",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "Creas orbes eléctricos estáticos a tu alrededor formando un campo minado defensivo. [COSTO: 4 Chakra] [DAÑO FIJO: 5] [EFECTO: Trampa reactiva. Detonan causando daño automáticamente al agresor que intente un golpe Melee.]"
+  },
+
+  "U-Uma-Tatsu-Mi-Saru": {
+      nombre: "Thunderbolt",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "Extiendes ambos brazos y liberas una poderosa carga eléctrica que fríe el sistema nervioso enemigo. [COSTO: 5 Chakra] [DAÑO FIJO: 5] [EFECTO: Ataque de Área. Golpea a todos los enemigos presentes.]"
+  },
+
+  "U-Tori-Ne-Inu-Hitsuji": {
+      nombre: "Destello de la Tierra",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "Descargas electricidad directamente sobre el suelo o conductos metálicos/acuáticos. [COSTO: 4 Chakra] [DAÑO FIJO: 5] [EFECTO: Si el objetivo está inmovilizado (Alambres/Suiton), el daño se multiplica x2 (10 total). Sin inmovilización, el ataque se tira con Desventaja.]"
+  },
+
+  "U-Ushi-Mi-Tora-Tatsu": {
+      nombre: "Telaraña de Rayo",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "Colocas las manos en el suelo y liberas una red eléctrica que atrapa a todos en el área. [COSTO: 5 Chakra] [DAÑO FIJO: 4] [EFECTO: Ataque de Área. Inmoviliza a enemigos y aliados por 1 turno. No puede bloquearse ni defenderse con técnica, solo esquivarse.]"
+  },
+
+  // RANGO A
+  "U-Inu-Tora-Ushi-Saru-I": {
+      nombre: "Pantera Negra",
+      tipo: "activa",
+      bono: { nin: 6 },
+      descripcion: "Invocas un relámpago negro con forma de pantera que caza a la presa a velocidad terminal. [COSTO: 7 Chakra] [DAÑO FIJO: 8 (Área) o 16 (Único)] [EFECTO: Ataca con Ventaja. Puedes elegir daño de área o daño x2 a un solo objetivo. Crítico con 19-20.]"
+  },
+
+  "U-Ushi-U-Saru-Mi-Tori": {
+      nombre: "Chidori",
+      tipo: "activa",
+      bono: { tai: 6 },
+      descripcion: "Comprimes chakra de rayo en tu mano creando un sonido de mil pájaros para una estocada suicida. [COSTO: 6 Chakra] [DAÑO FIJO: 10] [EFECTO: Ataque fulminante. Desventaja si no posees Sharingan o si el objetivo no está inmovilizado. Crítico con 19-20.]"
+  },
+
+  "U-Tatsu-I-Ne-Ushi-Uma": {
+      nombre: "Chidori Eisō",
+      tipo: "activa",
+      bono: { nin: 6 },
+      descripcion: "Moldeas el Chidori en forma de lanza extensible para atacar sin riesgo de contraataque. [COSTO: 6 Chakra] [DAÑO FIJO: 8] [EFECTO: Requiere Chidori. Ataque a media distancia. Se tira de forma normal (sin la desventaja del Chidori original).]"
+  },
+
+  "U-Hitsuji-Mi-Saru-Tori-Inu": {
+      nombre: "Chidori Nagashi",
+      tipo: "activa",
+      bono: { nin: 6 },
+      descripcion: "Expulsas rayos desde todos tus poros creando una cúpula defensiva y ofensiva. [COSTO: 6 Chakra] [DAÑO FIJO: 6] [EFECTO: Requiere Chidori. Ataque de Área. Impacta a todos los enemigos cercanos paralizándolos ligeramente.]"
+  },
+
+  "U-Tora-Tatsu-Ushi-Mi-I": {
+      nombre: "Senbon Chidori",
+      tipo: "activa",
+      bono: { nin: 6 },
+      descripcion: "Disparas agujas de relámpago a velocidad supersónica para perforar puntos vitales. [COSTO: 6 Chakra] [DAÑO FIJO: 3 por aguja] [EFECTO: Requiere Chidori. Tiras 3 ataques individuales. Crítico con 19-20.]"
+  },
+
+  "U-Ne-I-Saru-Tatsu-Hitsuji": {
+      nombre: "Bomba Trueno",
+      tipo: "activa",
+      bono: { nin: 7 },
+      descripcion: "Tres shinobis liberan una red eléctrica masiva que colapsa en una explosión ensordecedora. [COSTO: 6 Chakra por usuario] [DAÑO FIJO: 15] [EFECTO: Requiere 3 usuarios. Ataque de Área masivo. Daña a todos excepto a los participantes.]"
+  },
+
+  "U-Mi-Tori-Inu-Ne-Tora": {
+      nombre: "Shiden (Rayo Púrpura)",
+      tipo: "activa",
+      bono: { nin: 6 },
+      descripcion: "Concentras chakra púrpura para un ataque cortante cauto y potente. [COSTO: 5 Chakra] [DAÑO FIJO: 8] [EFECTO: Requiere Chidori. Ataque táctico a Melee. No sufre la desventaja del Chidori original (no requiere Sharingan).]"
+  },
+
+  "U-Ushi-U-Saru-Tori-Mi": {
+      nombre: "Raikiri",
+      tipo: "activa",
+      bono: { tai: 7 },
+      descripcion: "La variante más poderosa del Chidori capaz de partir un rayo natural. Totalmente letal. [COSTO: 8 Chakra] [DAÑO FIJO: 12] [EFECTO: Requiere Chidori. Desventaja sin Sharingan o inmovilización. Crítico con 19-20. Tras usarlo quedas Vulnerable 1 turno.]"
+  },
+
+  "U-Inu-Hitsuji-Mi-Tatsu-I": {
+      nombre: "Raikiri Bestia de Rastreo",
+      tipo: "activa",
+      bono: { nin: 6 },
+      descripcion: "Lanzas el Raikiri unido a tu mano mediante una correa eléctrica tomando forma de lobo rastreador. [COSTO: 8 Chakra] [DAÑO FIJO: 10] [EFECTO: Requiere Raikiri. Ataca siempre con Ventaja. Crítico con 19-20.]"
+  },
+
+  // RANGO S
+  "U-Tora-Tatsu-Mi-Saru-Tori-Ne": {
+      nombre: "Lariat",
+      tipo: "activa",
+      bono: { tai: 8 },
+      descripcion: "Canalizas electricidad en tu brazo y embistes directo al cuello del objetivo con velocidad imperceptible. [COSTO: 8 Chakra] [DAÑO FIJO: 10] [EFECTO: Si el golpe es Crítico (20 natural), el objetivo muere decapitado automáticamente.]"
+  },
+
+  "U-I-Inu-Uma-Hitsuji-Ushi-Tori": {
+      nombre: "Doble Lariat",
+      tipo: "activa",
+      bono: { tai: 9 },
+      descripcion: "Dos usuarios ejecutan un Lariat sincronizado buscando una decapitación inevitable. [COSTO: 8 Chakra por usuario] [DAÑO FIJO: 15] [EFECTO: Requiere 2 usuarios. Si el ataque es Crítico (19-20), el objetivo muere decapitado automáticamente.]"
+  },
+
+  "U-Mi-Tori-Tatsu-U-Saru-I": {
+      nombre: "Serpiente Relámpago",
+      tipo: "activa",
+      bono: { nin: 8 },
+      descripcion: "Atacas a distancia con un rayo serpenteante que anula el sistema nervioso. [COSTO: 9 Chakra] [DAÑO FIJO: 10] [EFECTO: Si impacta, el objetivo queda Paralizado 2 turnos (sin acciones ni defensa activa). Crítico con 19-20.]"
+  },
+
+  "U-Tora-Ne-Ushi-Mi-Hitsuji-Tatsu": {
+      nombre: "Kirin",
+      tipo: "activa",
+      bono: { nin: 10 },
+      descripcion: "Dominas el rayo natural de las nubes para un ataque fulminante a la velocidad de la luz. [COSTO: 10 Chakra] [DAÑO FIJO: 20] [EFECTO: Requiere haber lanzado 'Bala Fuego de Dragón' al cielo previamente. No se puede esquivar ni superar técnica. Crítico con 18-19-20.]"
+  },
+  // JUTSUS GENJUTSU (ILUSIONES)
+  // RANGO D
+  "Ne-Tori-Mi": {
+      nombre: "Espejo de Flores",
+      tipo: "activa",
+      bono: { gen: 2 },
+      descripcion: "Haces flotar una tormenta de pétalos ilusorios alrededor del enemigo, distorsionando su percepción de la distancia y el equilibrio. [COSTO: 2 Chakra + 1 por turno] [EFECTO: Mientras el Genjutsu esté activo, el objetivo realiza todas sus tiradas de Ataque con Desventaja. (Liberarse CD 14 Inteligencia)]"
+  },
+
+  "Ne-Ushi-I": {
+      nombre: "Dispersión de Pétalos",
+      tipo: "activa",
+      bono: { gen: 2 },
+      descripcion: "Creas un muro espeso de flores arremolinadas frente a los ojos del rival, ocultando completamente tus propios movimientos ofensivos. [COSTO: 2 Chakra + 1 por turno] [EFECTO: Mientras mantengas la técnica, todos tus ataques contra este objetivo se realizan con Ventaja.]"
+  },
+
+  "Ne-Saru-Tora": {
+      nombre: "Mente Astuta Afectada",
+      tipo: "activa",
+      bono: { gen: 2 },
+      descripcion: "Induces una fatiga mental instantánea. Haces creer al enemigo que ha estado corriendo en círculos durante horas, dejándolo sin aliento. [COSTO: 2 Chakra] [EFECTO: Drena 2 puntos de Energía a los objetivos afectados. Solo dura el turno en que se usa.]"
+  },
+
+  "Ne-Tatsu-U": {
+      nombre: "Vista al Infierno",
+      tipo: "activa",
+      bono: { gen: 2 },
+      descripcion: "Proyectas de golpe la imagen más macabra y traumática posible directamente en la corteza cerebral del objetivo, provocando un shock físico. [COSTO: 2 Chakra] [DAÑO FIJO: 2 (Daño directo a la Vida por estrés)] [EFECTO: Ataque mental rápido. Solo dura el instante en que es usado.]"
+  },
+
+  "Ne-Inu-Hitsuji": {
+      nombre: "Beso de Sapo",
+      tipo: "activa",
+      bono: { gen: 2 },
+      descripcion: "Te acercas para dar un beso que el enemigo percibe como el de un sapo gigante y repulsivo, provocando una parálisis por asco y terror. [COSTO: 1 Chakra + 1 por turno] [EFECTO: Realizas un ataque a Melee con Desventaja. Si logras impactar, el objetivo queda Inmovilizado. (Liberarse CD 14 Inteligencia)]"
+  },
+
+  // RANGO C
+  "Ne-Uma-Tori-Ushi": {
+      nombre: "Escape de Pétalos",
+      tipo: "activa",
+      bono: { gen: 3 },
+      descripcion: "Cuando te atrapan, tu cuerpo se deshace en un millar de pétalos que se esparcen por el aire, reformándote a unos metros de distancia. [COSTO: 3 Chakra] [EFECTO: Reacción Defensiva para liberarte. Tiras tu defensa con Desventaja si estás atrapado en un Ninjutsu físico, y con Ventaja si estás intentando Zafarte de un Genjutsu enemigo.] [REQUISITO: Estar bajo efecto de inmovilización.]"
+  },
+
+  "Ne-Tora-Tatsu-Saru": {
+      nombre: "Atadura de Habichuela",
+      tipo: "activa",
+      bono: { gen: 3 },
+      descripcion: "Desapareces de la vista del objetivo mientras gruesas enredaderas ilusorias brotan del suelo, trepando por su cuerpo hasta atarlo por completo. [COSTO: 3 Chakra + 1 por turno] [EFECTO: El objetivo queda Inmovilizado hasta que gaste su Energía en Zafarse o use Kai. (Liberarse CD 16 Inteligencia)]"
+  },
+
+  "Ne-Hitsuji-I-U": {
+      nombre: "Templo Nirvana",
+      tipo: "activa",
+      bono: { gen: 3 },
+      descripcion: "Haces caer plumas blancas ilusorias desde el cielo. Cualquiera que las mire siente una somnolencia antinatural imposible de resistir. [COSTO: 4 Chakra] [EFECTO: Ataque de Área. Todos los enemigos deben tirar Inteligencia o quedarse dormidos (Inmovilizados). Cualquier ataque físico contra alguien dormido se hace con Ventaja y Daño Doble. El daño los despierta. (Liberarse CD 16 Inteligencia)]"
+  },
+
+  "Ne-Tori-Inu-Uma": {
+      nombre: "Pared de Cristal",
+      tipo: "activa",
+      bono: { gen: 3 },
+      descripcion: "Encierras a los enemigos en un laberinto de espejos que distorsionan sus rostros, haciéndoles ver a sus aliados como monstruos o enemigos. [COSTO: 4 Chakra] [EFECTO: Ataque de Área. Los enemigos que caigan en la ilusión gastarán su próximo turno golpeándose entre ellos 1 vez usando un ataque a Melee. (Liberarse CD 16 Inteligencia)] [REQUISITO: Múltiples enemigos.]"
+  },
+
+  "Ne-Ushi-Mi-Tatsu": {
+      nombre: "Sauce",
+      tipo: "activa",
+      bono: { gen: 3 },
+      descripcion: "Balanceas tu arma con un ritmo hipnótico y fluido, creando múltiples imágenes residuales que confunden la guardia del rival. [COSTO: 2 Chakra] [EFECTO: No consume Punto de Mando. Prepara al enemigo, otorgándote Ventaja en tu próximo ataque a Melee en este mismo turno.] [REQUISITO: Arma equipada.]"
+  },
+
+  "Ne-Saru-Tori-I": {
+      nombre: "Paralizador",
+      tipo: "activa",
+      bono: { gen: 3 },
+      descripcion: "Clavas tus ojos en los del enemigo, proyectando un aura de intención asesina tan densa que sus músculos se bloquean por puro instinto de supervivencia. [COSTO: 3 Chakra] [EFECTO: El objetivo no puede usar acciones Atacantes durante 1 turno y realiza todas sus acciones de Defensa Activa con Desventaja. (Liberarse CD 16 Inteligencia)] [REQUISITO: Contacto visual.]"
+  },
+
+  // RANGO B
+  "Ne-Tora-U-Saru-Tatsu": {
+      nombre: "Efímero",
+      tipo: "activa",
+      bono: { gen: 4 },
+      descripcion: "Induces una alucinación pesadillesca donde la mitad del cuerpo del enemigo se transforma en un atacante que intenta asesinarlo, obligándolo a defenderse de sí mismo. [COSTO: 4 Chakra] [EFECTO: Si el objetivo cae, está obligado a tirar un ataque a Melee contra su propia Defensa Pasiva. Si acierta, se inflige su propio daño. Dura 1 turno. (Liberarse CD 18 Inteligencia)]"
+  },
+
+  "Ne-Ushi-Tori-Mi-Inu": {
+      nombre: "Pilar de Rayo",
+      tipo: "activa",
+      bono: { gen: 4 },
+      descripcion: "Generas un pilar de luz ilusoria con una intensidad lumínica cegadora, quemando las retinas de todos los presentes en el campo. [COSTO: 4 Chakra + 1 por turno] [EFECTO: Ataque de Área. Deja a los enemigos Cegados, obligándolos a defenderse con Desventaja. (Liberarse CD 18 Inteligencia)] [REQUISITO: Afinidad Rayo.]"
+  },
+
+  "Ne-Hitsuji-Uma-I-U": {
+      nombre: "Nube de Arena",
+      tipo: "activa",
+      bono: { gen: 4 },
+      descripcion: "Envuelves al enemigo en una tormenta de arena espectral donde sombras invisibles lo cortan y lo golpean repetidamente. [COSTO: 4 Chakra + 1 por turno] [DAÑO FIJO: 3 por turno] [EFECTO: El usuario debe permanecer inmovilizado y no puede realizar Defensa Activa mientras mantenga la técnica. El objetivo sufre el daño cada turno. (Liberarse CD 18 Inteligencia)] [REQUISITO: Afinidad Tierra.]"
+  },
+
+  "Ne-Tatsu-Saru-Tori-Mi": {
+      nombre: "Ilusión de Agujas",
+      tipo: "activa",
+      bono: { gen: 4 },
+      descripcion: "Haces tintinear tus senbon en una frecuencia específica, alterando el sentido del equilibrio del objetivo. Siente vértigo y es incapaz de juzgar las trayectorias. [COSTO: 4 Chakra + 1 por turno] [EFECTO: El objetivo tira la acción Esquivar con Desventaja. Cualquier ataque a distancia con Senbon contra él causa Doble Daño. (Liberarse CD 18 Inteligencia)] [REQUISITO: Arma Senbon equipada.]"
+  },
+
+  // RANGO A
+  "Ne-Tora-Ushi-Tatsu-U-Mi": {
+      nombre: "Muerte Prisión Arbórea",
+      tipo: "activa",
+      bono: { gen: 6 },
+      descripcion: "El campo se desvanece y un árbol gigantesco crece a espaldas del enemigo, amarrándolo mientras tú emerges del propio tronco para ejecutarlo. [COSTO: 6 Chakra + 2 por turno] [EFECTO: El objetivo queda absolutamente Inmovilizado. Mientras mantengas la técnica activa, todos los ataques que le inflijas causarán el Doble de Daño. (Liberarse CD 20 Inteligencia)]"
+  },
+
+  "Ne-I-Saru-Tori-Inu-Uma": {
+      nombre: "Espejo de Cielo y Cambio de la Tierra",
+      tipo: "activa",
+      bono: { gen: 6 },
+      descripcion: "Descifras la ilusión enemiga en el momento exacto en que penetra tu mente e inviertes el flujo de chakra para que el cazador se convierta en la presa. [COSTO: 5 Chakra] [EFECTO: Reacción Defensiva contra Genjutsu. Si aciertas tu tirada de Genjutsu contra la del atacante, anulas su ilusión y se la devuelves con todos los efectos originales.] [REQUISITO: Ser objetivo de un Genjutsu enemigo.]"
+  },
+
+  // RANGO S
+  "Ne-Hitsuji-Tora-Ushi-Tatsu-Saru-Tori": {
+      nombre: "Portador de la Oscuridad",
+      tipo: "activa",
+      bono: { gen: 8 },
+      descripcion: "Invocas un abismo negro como la tinta que devora cualquier fuente de luz, hundiéndolo en una oscuridad absoluta y claustrofóbica. [COSTO: 8 Chakra + 3 por turno] [EFECTO: La tirada de este Genjutsu se hace con Ventaja. Si el objetivo cae, queda sumido en ceguera total, realizando CUALQUIER tirada defensiva (Esquivar, Bloquear o Zafarse) con Desventaja absoluta. (Liberarse CD 22 Inteligencia)]"
+  },
+  // JUTSUS KATON (FUEGO)
+  // RANGO D
+  "Tora-Tori-U": {
+      nombre: "Llamas del Sabio Fénix",
+      tipo: "activa",
+      bono: { nin: 2 },
+      descripcion: "Exhalas múltiples proyectiles de fuego pequeños e impredecibles que obligan al enemigo a moverse erráticamente. [COSTO: 2 Chakra] [DAÑO FIJO: 1] [EFECTO: Si el objetivo gasta Energía para Esquivar esto y en el mismo turno recibe otro ataque, tirará su segunda Esquiva con Desventaja. Útil como Jutsu Conjunto (Impulso) para duplicar daño de shurikens.]"
+  },
+
+  "Tora-Ne-Mi": {
+      nombre: "Ocultación de Niebla Caliente",
+      tipo: "activa",
+      bono: { nin: 2 },
+      descripcion: "Liberas una nube de vapor hirviente que quema la piel y ciega momentáneamente al rival. [COSTO: 2 Chakra] [DAÑO FIJO: 1] [EFECTO: Si impacta, el enemigo queda vulnerable: su próxima acción de Defensa Activa (Esquivar o Bloquear) se tira con Desventaja.]"
+  },
+
+  "Tora-Tatsu-Saru": {
+      nombre: "Bala de Dragón",
+      tipo: "activa",
+      bono: { nin: 2 },
+      descripcion: "Disparas una esfera de fuego concentrado a alta velocidad. Es versátil y fácil de fusionar. [COSTO: 1 Chakra] [DAÑO FIJO: 2] [EFECTO: Proyectil estándar. Puede usarse en Jutsus Conjuntos para potenciar armas a distancia o jutsus de elemento Tierra.]"
+  },
+
+  "Tora-Inu-Ushi": {
+      nombre: "Fuego de Zorro",
+      tipo: "activa",
+      bono: { nin: 2 },
+      descripcion: "Creas un anillo flotante compuesto por diez pequeños fuegos fatuos que salen disparados como misiles teledirigidos. [COSTO: 2 Chakra] [DAÑO FIJO: 2] [EFECTO: Control de masas. Puedes dirigir el ataque completo a 1 objetivo, o dividirlo para golpear a 2 objetivos distintos simultáneamente.]"
+  },
+
+  "Tora-Hitsuji-I": {
+      nombre: "Danza de Niebla Mística",
+      tipo: "activa",
+      bono: { nin: 2 },
+      descripcion: "Exhalas un gas altamente inflamable e invisible que satura el aire alrededor del enemigo, convirtiendo la zona en un barril de pólvora. [COSTO: 1 Chakra] [EFECTO: Técnica de potenciación pura. El próximo ataque de elemento Fuego que impacte en esa zona suma +3 al Daño Fijo.]"
+  },
+
+  "Tora-Uma-Tori": {
+      nombre: "Meteoritos Ardientes",
+      tipo: "activa",
+      bono: { nin: 2 },
+      descripcion: "Escupes una rápida ráfaga de bolas de fuego del tamaño de un puño. Un ataque frontal básico pero efectivo. [COSTO: 2 Chakra] [DAÑO FIJO: 2] [EFECTO: Ataque estándar a distancia.]"
+  },
+
+  // RANGO C
+  "Tora-Tatsu-Ushi-Ne": {
+      nombre: "Gran Fuego de Dragón",
+      tipo: "activa",
+      bono: { nin: 3 },
+      descripcion: "Lanzas una llamarada masiva y devastadora en línea recta, tan destructiva como lenta. [COSTO: 3 Chakra] [DAÑO FIJO: 5] [EFECTO: Ataque pesado. La tirada de ataque se hace con Desventaja, a menos que el objetivo se encuentre bajo Inmovilización.]"
+  },
+
+  "Tora-I-Saru-Mi": {
+      nombre: "Formación Llamas Explosivas",
+      tipo: "activa",
+      bono: { nin: 3 },
+      descripcion: "Canalizas chakra por el suelo para que sellos explosivos emerjan directamente bajo tu enemigo, adhiriéndose a sus piernas. [COSTO: 2 Chakra] [DAÑO FIJO: 4] [EFECTO: La tirada de ataque se hace con Ventaja, a menos que el enemigo ya esté inmovilizado (en cuyo caso se tira normal).] [REQUISITO: 1 Papel Explosivo equipado.]"
+  },
+
+  "Tora-Hitsuji-Uma-U": {
+      nombre: "Prisión Celestial",
+      tipo: "activa",
+      bono: { tai: 3 },
+      descripcion: "Concentras fuego en la palma de tu mano y golpeas el pecho del enemigo, marcándolo con un sello ardiente. [COSTO: 3 Chakra] [EFECTO: Se tira usando 1d20 + Fuerza (Melee). Si aciertas, el objetivo no puede huir del combate. Si lo intenta, su Vida cae a 0 (Agonizando). El sello solo se rompe si el usuario es derrotado.]"
+  },
+
+  "Tora-Ne-Tori-Inu": {
+      nombre: "Captura de Llama",
+      tipo: "activa",
+      bono: { nin: 3 },
+      descripcion: "Moldeas una soga de fuego vivo que chasquea en el aire, ideal para enlazar extremidades y quemarlas al mismo tiempo. [COSTO: 3 Chakra + 1 por turno] [DAÑO FIJO: 2 al impactar] [EFECTO: Si aciertas, el objetivo queda atrapado y realiza todas sus acciones de Esquivar con Desventaja mientras mantengas el látigo.]"
+  },
+
+  "Tora-Ushi-Tatsu-Saru": {
+      nombre: "Espada de Fuego",
+      tipo: "activa",
+      bono: { tai: 3 },
+      descripcion: "Giras tu chakra en la mano hasta condensar un vórtice llameante que toma la forma de una hoja de espada incandescente. [COSTO: 3 Chakra] [EFECTO: Arma de energía. Suma +3 de daño extra a tus ataques a Melee. Se mantiene encendida sin costo adicional hasta que desees apagarla o el combate termine.]"
+  },
+
+  // RANGO B
+  "Tora-Mi-U-Tori-Tatsu": {
+      nombre: "Bala de Fuego de Dragón",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "Moldeas tu aliento en un torrente de fuego continuo que adopta la furiosa forma de la cabeza de un dragón. [COSTO: 4 Chakra] [DAÑO FIJO: 6] [EFECTO: Ataque frontal pesado.]"
+  },
+
+  "Tora-Ushi-Ne-I-Saru": {
+      nombre: "Garuda",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "Tres ninjas sincronizan su chakra para exhalar al unísono tres dragones de fuego que se trenzan en un ataque apocalíptico. [COSTO: 4 Chakra por usuario] [DAÑO FIJO: 12] [EFECTO: Ataque devastador. Requiere 3 Puntos de Mando.] [REQUISITO: 3 Aliados disponibles que conozcan la técnica.]"
+  },
+
+  "Tora-Saru-Hitsuji-Inu-Ushi": {
+      nombre: "Gran Bola de Fuego",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "Inhalas profundamente y expulsas una esfera ígnea masiva que avanza rodando y calcinando la tierra. [COSTO: 4 Chakra (Único) o 6 Chakra (Área)] [DAÑO FIJO: 5] [EFECTO: Si pagas 6 de Chakra, el tamaño de la bola se duplica e impacta a todos los enemigos en la zona.]"
+  },
+
+  "Tora-Tori-Mi-Tatsu-U": {
+      nombre: "Fuego de Dragón (Con Hilos)",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "Escupes fuego sobre un cable metálico previamente tensado. Las llamas viajan a la velocidad del rayo hacia el enemigo atado. [COSTO: 4 Chakra] [DAÑO FIJO: 10] [EFECTO: Como el enemigo no puede evadir, el daño base de 5 se multiplica x2.] [REQUISITO: Objetivo apresado con Hilos de Alambre.]"
+  },
+
+  "Tora-Ne-I-Uma-Tori": {
+      nombre: "Cenizas Ardientes",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "Expulsas una inmensa nube de ceniza de pólvora que envuelve al enemigo y detona en una implosión sorda al chasquear los dientes. [COSTO: 5 Chakra] [DAÑO FIJO: 6] [EFECTO: Imposible de Bloquear o superar con Choque. Toma dos turnos en detonar, dándole al enemigo dos oportunidades distintas de tirar Esquivar antes de la explosión.]"
+  },
+
+  "Tora-Tatsu-Saru-Hitsuji-Inu": {
+      nombre: "Canción del Dragón de Fuego",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "Disparas cinco proyectiles con forma de cabeza de dragón en rápida sucesión. Exige una precisión rítmica absoluta. [COSTO: 5 Chakra] [DAÑO FIJO: 2 por cabeza] [EFECTO: Tiras 5 veces el dado de ataque. La racha se cancela inmediatamente en el momento en que falles un dado.]"
+  },
+
+  "Tora-Ushi-Mi-U-Ne": {
+      nombre: "Gran Flor de Llama",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "Lanzas cinco meteoros de fuego que quedan suspendidos en el cielo, cayendo uno a uno como artillería pesada automática. [COSTO: 5 Chakra (Un solo pago)] [DAÑO FIJO: 3 por meteoro] [EFECTO: Durante los próximos 5 turnos, cae un meteoro a un objetivo de tu elección. Al no ser dirigido manualmente, la tirada de ataque siempre se hace con Desventaja.]"
+  },
+
+  "Tora-I-Uma-Tori-Saru": {
+      nombre: "Torbellino de Llama",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "Giras sobre ti mismo exhalando fuego, creando un tornado ígneo que consume los ataques entrantes. [COSTO: 4 Chakra] [DAÑO FIJO: 4] [EFECTO: Defensa Activa contra Jutsus o Melee (No defiende contra proyectiles). Si se usa ofensivamente, ataca de Área a TODOS los involucrados en el combate.]"
+  },
+
+  "Tora-Tatsu-Ushi-Ne-Mi": {
+      nombre: "Cortina del Campo de Extinción",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "Golpeas el suelo quebrando la tierra y escupes fuego por las grietas para que estalle en un géiser de magma bajo el enemigo. [COSTO: 5 Chakra] [DAÑO FIJO: 5] [EFECTO: Inquebrantable. No se puede Bloquear ni hacer Choque de Técnicas, el objetivo solo puede Esquivar.] [REQUISITO: Afinidad Tierra.]"
+  },
+
+  // RANGO A
+  "Tora-Inu-Tori-Saru-Hitsuji-Uma": {
+      nombre: "Pedernal Yagura",
+      tipo: "activa",
+      bono: { nin: 6 },
+      descripcion: "Lanzas una chispa ardiente que cobra vida transformándose en un avatar de fuego furioso que lucha a tu lado. [COSTO: 6 Chakra + 2 por turno] [DAÑO FIJO: 5] [EFECTO: Invoca una entidad que ataca a Melee usando tu acción. No tiene Vida ni Defensa. Solo se destruye si recibe un Jutsu de Agua (Suiton).]"
+  },
+
+  "Tora-U-Ne-I-Tatsu-Mi": {
+      nombre: "Ataque de Llama",
+      tipo: "activa",
+      bono: { tai: 6 },
+      descripcion: "Envuelves tus puños en chakra de fuego altamente inestable. Con cada impacto físico, detonas una explosión a quemarropa sobre el rival. [COSTO: 6 Chakra] [EFECTO: Suma +4 de daño explosivo a tus ataques a Melee. Se activa con un solo pago y no cuesta mantenerlo.]"
+  },
+
+  "Tora-Ushi-Mi-Saru-I-Ne": {
+      nombre: "Araña Roja",
+      tipo: "activa",
+      bono: { nin: 6 },
+      descripcion: "Envuelves al objetivo en un torbellino de llamas y saltas sobre él convertido en una monstruosa araña de fuego que lo devora vivo. [COSTO: 6 Chakra] [DAÑO FIJO: 7 (Si acierta) / 3 (Si esquiva)] [EFECTO: Inquebrantable. No puede ser Bloqueada y solo puede contrarrestarse con Agua. Si el enemigo Esquiva, evita a la araña pero sufre 3 de daño inevitable por el torbellino inicial.]"
+  },
+
+  "Tora-Hitsuji-Uma-Inu-Tori-Ushi": {
+      nombre: "Jaula Linterna del Ogro",
+      tipo: "activa",
+      bono: { nin: 6 },
+      descripcion: "Invocas macabras esferas de fuego escarlata con rostros demoníacos que se abalanzan sobre los intrusos para consumir su espíritu. [COSTO: 7 Chakra] [DAÑO FIJO: 3 por turno] [EFECTO: Ataque de Área. Si acierta, aplica quemadura grave: los afectados sufren el daño fijado durante 3 turnos seguidos.]"
+  },
+
+  // RANGO S
+  "Tora-Tatsu-Mi-Saru-I-Ne-Uma": {
+      nombre: "Torbellino de Fuego",
+      tipo: "activa",
+      bono: { nin: 8 },
+      descripcion: "Invocas tres tormentas de fuego aisladas y usas tu abanico de guerra para lanzarlas como sierras ardientes. [COSTO: 8 Chakra] [DAÑO FIJO: 5 por torbellino] [EFECTO: Impacta 3 veces en total. Puedes enfocar los impactos a un solo objetivo (15 de daño) o repartirlos.] [REQUISITO: Arma Gunbai equipada.]"
+  },
+
+  "Tora-Ushi-Inu-Tori-Hitsuji-U-Tatsu": {
+      nombre: "Gran Aniquilación de Fuego",
+      tipo: "activa",
+      bono: { nin: 8 },
+      descripcion: "El apogeo térmico. Expulsas un mar de fuego que cubre el horizonte entero, reduciendo a cenizas todo a su paso. [COSTO: 12 Chakra] [DAÑO FIJO: 12] [EFECTO: Ataque de Área Masivo. No se puede Esquivar ni Bloquear físicamente. La única forma de sobrevivir es contrarrestarlo con la acción Superar Técnica.]"
+  },
+
+  "Tora-Ne-I-Uma-Saru-Mi-Ushi": {
+      nombre: "Kaiju",
+      tipo: "activa",
+      bono: { nin: 8 },
+      descripcion: "Arrojas una chispa maestra dándole forma a una bestia mitológica de fuego puro del tamaño de una invocación gigante. [COSTO: 10 Chakra] [EFECTO: Entidad de soporte masiva. Mientras esté activa, otorga automáticamente +1 Punto de Mando extra al equipo cada ronda. No tiene Vida, solo se destruye si recibe 3 Jutsus de Agua (Suiton).]"
+  },
+  // JUTSUS SUITON (AGUA)
+  // RANGO D
+  "Mi-Tora-Ushi": {
+      nombre: "Convergencia de Agua",
+      tipo: "activa",
+      bono: { nin: 2 },
+      descripcion: "Concentras tu chakra obligando a que la humedad natural emerja hasta formar un charco o estanque. [COSTO: 1 Chakra] [EFECTO: Crea un 'Cuerpo de Agua' persistente en el campo de batalla.]"
+  },
+
+  "Mi-U-Saru": {
+      nombre: "Brazo de Agua",
+      tipo: "activa",
+      bono: { tai: 2 },
+      descripcion: "Tu brazo se vuelve líquido y se expande, ganando fuerza sobrehumana. [COSTO: 2 Chakra] [EFECTO: Añade +2 al Daño Fijo de tus ataques a Melee.] [REQUISITO: Jutsu de Hidratación activo.]"
+  },
+
+  "Mi-Tori-Tatsu": {
+      nombre: "Choque de Olas",
+      tipo: "activa",
+      bono: { nin: 2 },
+      descripcion: "Invocas una ola violenta que choca contra tu objetivo. [COSTO: 3 Chakra] [DAÑO FIJO: 2] [EFECTO: Acción de Ataque o Defensa Aliada/Propia (contra Melee/Armas). Crea un 'Cuerpo de Agua' en el campo.]"
+  },
+
+  "Mi-Hitsuji-Ne": {
+      nombre: "Bloque Tempestuoso",
+      tipo: "activa",
+      bono: { nin: 2 },
+      descripcion: "Haces caer una gruesa cascada súbita frente a ti para frenar un golpe en seco. [COSTO: 2 Chakra] [EFECTO: Defensa Activa contra ataques Melee. Crea un 'Cuerpo de Agua' en el campo.]"
+  },
+
+  "Mi-Saru-Tori": {
+      nombre: "Pilar de Agua (Utilidad)",
+      tipo: "activa",
+      bono: { nin: 2 },
+      descripcion: "Alzan una enorme columna de líquido capaz de levantar objetos o alterar la geografía. [COSTO: 1 Chakra por usuario] [DAÑO FIJO: 1 (Si es ofensivo)] [EFECTO: Sirve para mover masas pesadas.] [REQUISITO: 2 o más usuarios. Cuerpo de Agua (o cuesta el doble de Chakra).]"
+  },
+
+  "Mi-Tatsu-I": {
+      nombre: "Látigo de Agua",
+      tipo: "activa",
+      bono: { nin: 2 },
+      descripcion: "Moldeas un tentáculo firme y flexible que se enrosca alrededor de tu oponente. [COSTO: 2 Chakra] [DAÑO FIJO: 1] [EFECTO: Si acierta, el objetivo queda Inmovilizado. Los ataques de Raiton contra el objetivo inmovilizado infligen el doble de daño.] [REQUISITO: Cuerpo de Agua (o cuesta el doble de Chakra).]"
+  },
+
+  "Mi-Uma-Tora": {
+      nombre: "Cuerno de Agua",
+      tipo: "activa",
+      bono: { nin: 2 },
+      descripcion: "Exhalas un potente chorro de agua a presión continua. [COSTO: 2 Chakra] [DAÑO FIJO: 2] [EFECTO: Chorro multipropósito para Atacar o para Bloqueo/Choque de Técnicas menores.]"
+  },
+
+  "Mi-Inu-U": {
+      nombre: "Lluvia Negra",
+      tipo: "activa",
+      bono: { nin: 2 },
+      descripcion: "Generas una llovizna de aceite resbaladizo que impregna el campo, volviéndolo inflamable. [COSTO: 2 Chakra] [EFECTO: Durante 1 turno, cualquier ataque de Katon (Fuego) en el campo inflige el doble de daño.]"
+  },
+
+  "Mi-Ushi-Tori": {
+      nombre: "Pilar de Agua (Defensivo)",
+      tipo: "activa",
+      bono: { nin: 2 },
+      descripcion: "Levantas un cilindro de agua a tu alrededor que envuelve tu cuerpo, amortiguando impactos. [COSTO: 2 Chakra] [EFECTO: Te otorga un bono fijo de +4 a tu tirada en tu próxima acción de Bloquear.] [REQUISITO: Cuerpo de Agua (o cuesta el doble de Chakra).]"
+  },
+
+  // RANGO C
+  "Mi-Tora-U-Saru": {
+      nombre: "Látigo Dragón de Agua",
+      tipo: "activa",
+      bono: { nin: 3 },
+      descripcion: "Creas veloces tentáculos líquidos con fauces de dragón que persiguen a su presa. [COSTO: 3 Chakra base + 1 por látigo extra] [DAÑO FIJO: 3 por látigo] [EFECTO: Ineludible. No puede ser Esquivado, solo Bloqueado o Choque de Técnicas.] [REQUISITO: Cuerpo de Agua (o cuesta el doble de Chakra base).]"
+  },
+
+  "Mi-Tori-Tatsu-Hitsuji": {
+      nombre: "Choque de Rápidos",
+      tipo: "activa",
+      bono: { nin: 3 },
+      descripcion: "Haces girar el agua creando un vórtice absorbente, perfecto para tragar ataques ígneos. [COSTO: 3 Chakra] [EFECTO: Defensa activa (contra técnicas, proyectiles o melee). Tiras con Ventaja si te defiendes de un ataque de Fuego.]"
+  },
+
+  "Mi-Ne-I-Uma": {
+      nombre: "Trampa de Jarabe",
+      tipo: "activa",
+      bono: { nin: 3 },
+      descripcion: "Escupes un charco de líquido viscoso que se adhiere a las botas de tu objetivo. [COSTO: 3 Chakra] [EFECTO: El objetivo realiza todas sus tiradas de Esquivar con Desventaja durante los próximos 3 turnos.]"
+  },
+
+  "Mi-Ushi-Tori-Tora": {
+      nombre: "Cañón de Agua",
+      tipo: "activa",
+      bono: { nin: 3 },
+      descripcion: "Disparas una ráfaga masiva y contundente de agua desde tu boca con la fuerza de la artillería. [COSTO: 3 Chakra] [DAÑO FIJO: 4] [EFECTO: Ataque estándar pesado o Defensa Activa por Choque de Técnicas.]"
+  },
+
+  "Mi-Hitsuji-Saru-Inu": {
+      nombre: "Palma de Olas",
+      tipo: "activa",
+      bono: { nin: 3 },
+      descripcion: "Liberas un torrente de agua a quemarropa directamente desde tu mano abierta. [COSTO: 2 Chakra] [DAÑO FIJO: 3] [EFECTO: Ataque a corta distancia o Defensa Activa.]"
+  },
+
+  "Mi-Tatsu-U-Tori": {
+      nombre: "Espada de Agua",
+      tipo: "activa",
+      bono: { tai: 3 },
+      descripcion: "Envuelves tu kunai en agua que gira en espiral, cortando con la presión de una sierra. [COSTO: 2 Chakra] [EFECTO: Suma +3 de daño extra a tu Kunai. Dura solo el instante del impacto.] [REQUISITO: Kunai equipado.]"
+  },
+
+  "Mi-Saru-I-Ne": {
+      nombre: "Mantis de Agua",
+      tipo: "activa",
+      bono: { tai: 3 },
+      descripcion: "Moldeas largos apéndices afilados en tus brazos, imitando a una mantis religiosa. [COSTO: 3 Chakra + 1 por turno] [DAÑO FIJO: 4 por golpe] [EFECTO: Modificador de ataque cuerpo a cuerpo.] [REQUISITO: Cuerpo de Agua (o cuesta el doble de Chakra base).]"
+  },
+
+  "Mi-Uma-Tori-Ushi": {
+      nombre: "Medusa",
+      tipo: "activa",
+      bono: { nin: 3 },
+      descripcion: "Creas una medusa de agua curativa que sana los tejidos heridos al contacto con su chakra calmante. [COSTO: Variable] [EFECTO: Cura al portador una cantidad de Vida idéntica al Chakra invertido al invocarla.] [REQUISITO: Pasiva Iryō Ninjutsu (Médico).]"
+  },
+
+  // RANGO B
+  "Mi-Tora-U-Saru-Tatsu": {
+      nombre: "Bestia de Agua",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "Le das forma de depredador feroz al agua. Dispara proyectiles líquidos por ti. [COSTO: 5 Chakra] [DAÑO FIJO: 4 por chorro] [EFECTO: Invoca constructo (dura 3 chorros). Atacar con ella cuesta 1 Punto de Mando, pero 0 Chakra.] [REQUISITO: Cuerpo de Agua (o cuesta el doble de Chakra).]"
+  },
+
+  "Mi-Tori-Hitsuji-I-Ne": {
+      nombre: "Formación Pilar",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "Escupes un torrente gigantesco que se alza como una muralla infranqueable. [COSTO: 4 Chakra] [EFECTO: Defensa masiva. Tras usarlo, el próximo ataque de Suiton en el combate (tuyo o aliado) cuesta la mitad de Chakra.]"
+  },
+
+  "Mi-Ushi-Tora-Tori-Inu": {
+      nombre: "Colisión de Olas",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "Desatas una avalancha de agua que barre la totalidad del campo de batalla. [COSTO: 5 Chakra] [DAÑO FIJO: 5] [EFECTO: Ataque de Área. Daña a todos los enemigos y aliados. Genera un Cuerpo de Agua inmenso.]"
+  },
+
+  "Mi-Hitsuji-Saru-Uma-Tatsu": {
+      nombre: "Prisión de Agua",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "Encierras a tu víctima en una esfera perfecta y densa, privándola de oxígeno. [COSTO: 4 Chakra + 1 por turno] [EFECTO: Ambos Inmovilizados. Si el objetivo no se Libera en 5 turnos, su Vida cae a 0 (Agonizando por ahogamiento).] [REQUISITO: Cuerpo de Agua (o cuesta el doble de Chakra base).]"
+  },
+
+  "Mi-I-Ne-U-Tori": {
+      nombre: "Contenedor Burbuja",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "El agua de tu piel absorbe el impacto y envuelve automáticamente la cabeza del atacante asfixiándolo. [COSTO: 4 Chakra] [EFECTO: Reacción. Recibes el daño, pero atrapas su cabeza. El rival se ahoga en 5 turnos si no logra Liberarse.] [REQUISITO: Jutsu de Hidratación.]"
+  },
+
+  "Mi-Tatsu-Tori-Saru-Hitsuji": {
+      nombre: "Bala Tiburón",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "El agua embiste al objetivo como un misil con forma de tiburón, dejándolo aturdido y sin aire. [COSTO: 4 Chakra] [DAÑO FIJO: 5] [EFECTO: Si aciertas, el objetivo queda inmovilizado físicamente durante su próximo turno.] [REQUISITO: Cuerpo de Agua (o cuesta el doble de Chakra).]"
+  },
+
+  "Mi-Uma-I-Ne-Ushi": {
+      nombre: "5 Tiburones Hambrientos",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "Invocas un banco de cinco escualos de agua que se abalanzan en un frenesí despiadado. [COSTO: 5 Chakra] [DAÑO FIJO: 2 por tiburón] [EFECTO: Tiras 5 veces el dado de ataque. La racha se cancela inmediatamente al fallar un dado.] [REQUISITO: Cuerpo de Agua (o cuesta el doble de Chakra).]"
+  },
+
+  "Mi-Inu-Tora-U-Saru": {
+      nombre: "Muro de Agua",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "Alzas una gruesa barrera sólida desde el suelo diseñada para extinguir llamas. [COSTO: 4 Chakra] [EFECTO: Defensa Activa. Tiras con Ventaja si el ataque entrante es de Fuego.] [REQUISITO: Cuerpo de Agua (o cuesta el doble de Chakra).]"
+  },
+
+  "Mi-Saru-Tatsu-Tori-I": {
+      nombre: "Olas Furiosas",
+      tipo: "activa",
+      bono: { nin: 4 },
+      descripcion: "Exhalas una catarata constante de agua a alta presión aplastando los huesos del frente. [COSTO: 4 Chakra] [DAÑO FIJO: 6] [EFECTO: Ataque frontal pesado.]"
+  },
+
+  // RANGO A
+  "Mi-Tora-U-Saru-Tatsu-Hitsuji": {
+      nombre: "Globos de Agua",
+      tipo: "activa",
+      bono: { nin: 6 },
+      descripcion: "Emergen burbujas inofensivas que luego se disparan como balas reventando el área. [COSTO: 6 Chakra] [DAÑO FIJO: 6] [EFECTO: Ataque de Área. Impacta a todos los enemigos presentes.] [REQUISITO: Cuerpo de Agua (o cuesta el doble de Chakra).]"
+  },
+
+  "Mi-Tori-Hitsuji-I-Ne-Uma": {
+      nombre: "Colmillo de Agua",
+      tipo: "activa",
+      bono: { nin: 6 },
+      descripcion: "Espinas líquidas surgen desde el estanque empalando al enemigo desde un ángulo ciego. [COSTO: 5 Chakra] [DAÑO FIJO: 8] [EFECTO: Inquebrantable. El objetivo no puede usar la acción de Bloquear, solo Esquivar.] [REQUISITO: Cuerpo de Agua (o cuesta el doble de Chakra).]"
+  },
+
+  "Mi-Ushi-Tora-Tori-Inu-U": {
+      nombre: "Clon de Agua",
+      tipo: "activa",
+      bono: { nin: 6 },
+      descripcion: "Moldeas una copia tuya que te asiste abriendo tu guardia táctica hasta que se rompa. [COSTO: 6 Chakra] [EFECTO: Mientras el clon no reciba daño, tus Esquivas tienen Ventaja y tu límite de Puntos de Mando sube a 2 por turno.] [REQUISITO: Cuerpo de Agua (o cuesta el doble de Chakra).]"
+  },
+
+  "Mi-Hitsuji-Saru-Uma-Tatsu-Tori": {
+      nombre: "Gran Cascada",
+      tipo: "activa",
+      bono: { nin: 6 },
+      descripcion: "Invocas un huracán de agua descontrolado que aplasta bajo toneladas de presión. [COSTO: 7 Chakra] [DAÑO FIJO: 8] [EFECTO: Ataque masivo de Área. Daña a todos los enemigos.] [REQUISITO: Cuerpo de Agua (o cuesta el doble de Chakra).]"
+  },
+
+  "Mi-I-Ne-U-Tori-Saru": {
+      nombre: "Flujo de la Gran Cascada",
+      tipo: "activa",
+      bono: { nin: 6 },
+      descripcion: "Generas un violento remolino que arrastra al enemigo a las oscuras profundidades. [COSTO: 6 Chakra + 2 por turno] [EFECTO: Si el objetivo no logra Liberarse en 5 turnos, su Vida cae a 0 (Agonizando).] [REQUISITO: Cuerpo de Agua (o cuesta el doble de Chakra base).]"
+  },
+
+  "Mi-Tatsu-Tori-Saru-Hitsuji-I": {
+      nombre: "Bala de Dragón de Agua",
+      tipo: "activa",
+      bono: { nin: 6 },
+      descripcion: "El agua adopta la forma de un dragón mitológico abrumador imposible de frenar con magia. [COSTO: 7 Chakra] [DAÑO FIJO: 10] [EFECTO: El enemigo no puede usar 'Superar Técnica' con un Jutsu distinto a este. Solo puede Esquivar o Bloquear.] [REQUISITO: Cuerpo de Agua (o cuesta el doble de Chakra).]"
+  },
+
+  "Mi-Uma-I-Ne-Ushi-Tora": {
+      nombre: "Espejo de Agua",
+      tipo: "activa",
+      bono: { nin: 6 },
+      descripcion: "Creas un espejo líquido que materializa un clon idéntico del atacante para interceptar el golpe. [COSTO: 5 Chakra] [EFECTO: Defensa Activa exclusiva contra ataques Melee. Resuelves tu tirada defensiva con Ventaja.]"
+  },
+
+  "Mi-Inu-Tora-U-Saru-Tatsu": {
+      nombre: "Lluvia Densa",
+      tipo: "activa",
+      bono: { nin: 6 },
+      descripcion: "Haces llover gotas frías que sofocan cualquier chakra que no fluya como el agua. [COSTO: 6 Chakra + 2 por turno] [EFECTO: Anula de forma absoluta cualquier Jutsu (ofensivo o defensivo) de elemento distinto al Suiton en el campo mientras esté activa.]"
+  },
+
+  "Mi-Saru-Tatsu-Tori-I-Ne": {
+      nombre: "Disparo de Agua",
+      tipo: "activa",
+      bono: { nin: 6 },
+      descripcion: "Condensas agua en tu boca y la disparas tan rápido que apenas se ve un destello. [COSTO: 6 Chakra] [DAÑO FIJO: 8] [EFECTO: Imposible de Bloquear. El enemigo tira la acción de Esquivar con Desventaja.]"
+  },
+
+  "Mi-U-Hitsuji-Uma-Inu-Tori": {
+      nombre: "Pistola de Agua",
+      tipo: "activa",
+      bono: { nin: 6 },
+      descripcion: "Simulas el gesto de una pistola disparando gotas comprimidas que perforan blindajes. [COSTO: 4 Chakra (1 bala) / 8 Chakra (2 balas)] [DAÑO FIJO: 7 por bala] [EFECTO: Imposible Bloquear. El objetivo solo puede Esquivar o hacer Choque con Desventaja.]"
+  },
+
+  // RANGO S
+  "Mi-Tora-U-Saru-Tatsu-Hitsuji-I": {
+      nombre: "Mil Agujas de Agua",
+      tipo: "activa",
+      bono: { nin: 8 },
+      descripcion: "Congelas incontables gotas en agujas afiladas acribillando sin piedad. [COSTO: 8 Chakra] [DAÑO FIJO: 10] [EFECTO: Si atacas a un objetivo Inmovilizado, tiras con Ventaja y el daño se multiplica x2 (20 daño).] [REQUISITO: Cuerpo de Agua (o cuesta el doble de Chakra).]"
+  },
+
+  "Mi-Tori-Hitsuji-I-Ne-Uma-Tora": {
+      nombre: "Bala de Tiburón Gigante",
+      tipo: "activa",
+      bono: { nin: 8 },
+      descripcion: "Invocas un tiburón colosal que absorbe la energía espiritual al morder. [COSTO: 10 Chakra] [DAÑO FIJO: 12] [EFECTO: Imposible de Bloquear. El daño fijo se resta directamente de la Vida y de la reserva de Chakra del enemigo.] [REQUISITO: Cuerpo de Agua (o cuesta el doble de Chakra).]"
+  },
+
+  "Mi-Ushi-Tora-Tori-Inu-U-Saru": {
+      nombre: "Jutsu de Hidratación",
+      tipo: "pasiva",
+      descripcion: "Tu cuerpo se convierte literalmente en agua, fluyendo y licuándose a voluntad. [COSTO: 0 Chakra (Pasiva)] [EFECTO: Inmune al Daño físico Melee y proyectiles. Recibes la mitad de daño de otras técnicas Suiton, pero sufres el Doble de Daño si impacta Raiton.]"
+  },
+
+  "Mi-Hitsuji-Saru-Uma-Tatsu-Tori-Ne": {
+      nombre: "Tate Eboshi",
+      tipo: "activa",
+      bono: { tai: 8 },
+      descripcion: "Te fusionas con el estanque adoptando la forma de un monstruo masivo. [COSTO: 10 Chakra + 3 por turno] [EFECTO: Multiplica x2 tu daño base Melee. Mientras opere, eres incapaz de usar 'Esquivar'.] [REQUISITO: Cuerpo de Agua y Jutsu de Hidratación activos (o cuesta el doble de Chakra base).]"
+  },
+
+  "Mi-I-Ne-U-Tori-Saru-Hitsuji": {
+      nombre: "Mil Tiburones Hambrientos",
+      tipo: "activa",
+      bono: { nin: 8 },
+      descripcion: "Desatas un tsunami del que emergen mil tiburones que ahogan y devoran todo. [COSTO: 8 Chakra base + 1 por tiburón] [DAÑO FIJO: 3 por tiburón] [EFECTO: Tiras 1d20 de ataque individual por cada tiburón que elijas crear.] [REQUISITO: Cuerpo de Agua (o cuesta el doble de Chakra base).]"
+  },
+
+  "Mi-Tatsu-Tori-Saru-Hitsuji-I-Uma": {
+      nombre: "Gran Colisión de Olas",
+      tipo: "activa",
+      bono: { nin: 8 },
+      descripcion: "Vomitas un océano formando una inmensa cúpula submarina mortal. [COSTO: 12 Chakra + 4 por turno] [EFECTO: Trampa de Campo Definitiva. Atrapa a todos en el terreno. A los 5 turnos bajo el agua, todos los atrapados caen a 0 de Vida (Agonizando). Solo termina si el usuario la desactiva o cae a 0 Vida.]"
+  },
+
+  "Mi-Uma-I-Ne-Ushi-Tora-U": {
+      nombre: "Danza de Tiburón",
+      tipo: "pasiva",
+      descripcion: "Al fusionarte con Samehada en tu océano, te transformas en un híbrido escualo a velocidades aterradoras. [COSTO: 0 Chakra (Pasiva)] [EFECTO: Multiplica x2 el daño de tu arma. Dentro del domo de agua, todos tus ataques a Melee tienen Ventaja.] [REQUISITO: Gran Colisión de Olas activa y arma Samehada.]"
+  },
+};
